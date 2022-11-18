@@ -10,12 +10,13 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async create(factura: FacturaEntity): Promise<FacturaEntity> {
+  async create(factura: FacturaEntity): Promise<any> {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
       const newFactura = await queryRunner.manager.save(factura);
+      console.log(newFactura);
       await queryRunner.commitTransaction();
       return Promise.resolve(newFactura);
     } catch (err) {

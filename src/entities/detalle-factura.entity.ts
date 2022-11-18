@@ -1,4 +1,3 @@
-import { FacturaDetalleDto } from 'src/dto/factura-detalle.dto';
 import {
   Column,
   Entity,
@@ -8,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { FacturaEntity } from './factura.entity';
+import { FacturaDetalleDto } from '../dto/factura-detalle.dto';
 
 @Index('fk_tbl_detalle_factura_tbl_factura', ['facturaId'], {})
 @Entity('tbl_detalle_factura', { schema: 'facturacion' })
