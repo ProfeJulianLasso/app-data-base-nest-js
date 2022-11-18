@@ -16,7 +16,11 @@ describe('AppController', () => {
       release: jest.fn(),
       rollbackTransaction: jest.fn(),
       manager: {
-        save: jest.fn(),
+        save: jest.fn().mockResolvedValue({
+          clienteNombre: 'Julian Lasso',
+          clienteCorreo: 'julian.lasso@sofka.com.co',
+          id: 1,
+        }),
       },
       commitTransaction: jest.fn(),
     })),
@@ -51,20 +55,17 @@ describe('AppController', () => {
         clienteCorreo: 'julian.lasso@sofka.com.co',
         id: 1,
       };
-      const dataMock = expected;
+      // const dataMock = expected;
       const data = {
         clienteNombre: 'Julian Lasso',
         clienteCorreo: 'julian.lasso@sofka.com.co',
       };
-      jest
-        .spyOn(dataSource.createQueryRunner().manager, 'save')
-        .mockReturnThis()
-        .mockImplementation(jest.fn().mockResolvedValue(dataMock));
-      // .mockResolvedValue(dataMock);
+      // jest
+      //   .spyOn(dataSource.createQueryRunner().manager, 'save')
+      //   .mockResolvedValue(dataMock);
 
       // Act
       const result = await appController.createFactura(data);
-      console.log(result);
 
       // Assert
       expect(result).toEqual(expected);
