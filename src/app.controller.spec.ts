@@ -68,6 +68,7 @@ describe('AppController', () => {
 
       // Assert
       expect(result).toEqual(expected);
+      // listo, vamos para crear una liberación alpha
     });
   });
 });
