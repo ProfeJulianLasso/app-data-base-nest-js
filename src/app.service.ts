@@ -16,7 +16,6 @@ export class AppService {
     await queryRunner.startTransaction();
     try {
       const newFactura = await queryRunner.manager.save(factura);
-      console.log(newFactura);
       await queryRunner.commitTransaction();
       return Promise.resolve(newFactura);
     } catch (err) {

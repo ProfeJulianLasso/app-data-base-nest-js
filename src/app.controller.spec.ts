@@ -16,6 +16,7 @@ describe('AppController', () => {
       release: jest.fn(),
       rollbackTransaction: jest.fn(),
       manager: {
+        // save: jest.fn(),
         save: jest.fn().mockResolvedValue({
           clienteNombre: 'Julian Lasso',
           clienteCorreo: 'julian.lasso@sofka.com.co',
